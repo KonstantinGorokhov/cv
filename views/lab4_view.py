@@ -1,4 +1,3 @@
-"""ЛР4: окно ВЧ-фильтрации, свёртки, выделения границ и углов."""
 import time
 import tkinter as tk
 from typing import Callable
@@ -43,7 +42,6 @@ class Lab4View:
         self.canvas = FigureCanvasTkAgg(self.fig, master=self.win)
         self.canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
 
-    # ---------- вкладки ----------
 
     def _build_highpass(self, nb):
         tab = tk.Frame(nb)
@@ -144,7 +142,6 @@ class Lab4View:
         tk.Button(tab, text="Найти углы", command=self._run_corners).grid(
             row=0, column=4, rowspan=2, padx=15)
 
-    # ---------- обработчики ----------
 
     def _source(self):
         if self.app.current is None:
@@ -249,7 +246,6 @@ class Lab4View:
             return f"Углов: {len(xs)}"
         self._run(compute)
 
-    # ---------- отображение ----------
 
     def _show(self, src, mid, res, mid_title, res_title):
         self.result = res
