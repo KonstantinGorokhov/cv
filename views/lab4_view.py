@@ -109,10 +109,7 @@ class Lab4View:
         tab = tk.Frame(nb)
         nb.add(tab, text="Границы")
 
-        tk.Label(tab, text="Оператор:").grid(row=0, column=0, sticky="w")
-        self.ed_op = tk.StringVar(value="Sobel")
-        tk.Radiobutton(tab, text="Собель", variable=self.ed_op, value="Sobel").grid(row=0, column=1, sticky="w")
-        tk.Radiobutton(tab, text="Превитт", variable=self.ed_op, value="Prewitt").grid(row=0, column=2, sticky="w")
+        tk.Label(tab, text="Оператор Собеля").grid(row=0, column=0, columnspan=3, sticky="w")
 
         tk.Label(tab, text="σ предварительного размытия (0 = нет):").grid(row=0, column=3, padx=(15, 0))
         self.ed_sigma = tk.StringVar(value="1.0")
@@ -228,8 +225,8 @@ class Lab4View:
         def compute(img):
             sigma = self._num(self.ed_sigma, "σ", float, 0)
             thr = int(self.ed_thr.get())
-            mag, binary = f4.edges(img, self.ed_op.get(), sigma, thr)
-            op = "Собель" if self.ed_op.get() == "Sobel" else "Превитт"
+            mag, binary = f4.edges(img, sigma, thr)
+            op = "Собель"
             if binary is None:
                 self._show(img, None, mag, "", f"|∇I| ({op})")
             else:
