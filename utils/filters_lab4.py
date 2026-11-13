@@ -208,6 +208,14 @@ def max_filter(arr, r):
 
 
 def harris(img, k=0.04, sigma=1.5, rel_threshold=0.01, nms_radius=4):
+    """
+    :param img:
+    :param k: чувствительность
+    :param sigma: размер гауссова окна
+    :param rel_threshold: отсекает слабые отклики
+    :param nms_radius: радиус подавнеия немаксиумов
+    :return:
+    """
     g = grayscale(img)
     ix = convolve(g, SOBEL_X) / 8.0
     iy = convolve(g, SOBEL_Y) / 8.0
